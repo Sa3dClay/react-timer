@@ -7,7 +7,6 @@ function App() {
     const timer = useSelector((state) => state.timer);
 
     const TIMER_IN_MS =
-        timer.days * 24 * 60 * 60 * 1000 +
         timer.hours * 60 * 60 * 1000 +
         timer.minutes * 60 * 1000 +
         timer.seconds * 1000;

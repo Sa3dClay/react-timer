@@ -10,16 +10,10 @@ const ExpiredNotice = () => {
     );
 };
 
-const ShowCounter = ({ days, hours, minutes, seconds }) => {
+const ShowCounter = ({ hours, minutes, seconds }) => {
     return (
         <div className="show-counter">
             <a href="/" className="countdown-link">
-                <DateTimeDisplay
-                    value={days}
-                    type={"Days"}
-                    isDanger={days <= 1}
-                />
-                <p>:</p>
                 <DateTimeDisplay
                     value={hours}
                     type={"Hours"}
@@ -43,18 +37,13 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 };
 
 const CountdownTimer = ({ targetDate }) => {
-    const [days, hours, minutes, seconds] = useCountdown(targetDate);
+    const [hours, minutes, seconds] = useCountdown(targetDate);
 
-    if (days + hours + minutes + seconds <= 0) {
+    if (hours + minutes + seconds <= 0) {
         return <ExpiredNotice />;
     } else {
         return (
-            <ShowCounter
-                days={days}
-                hours={hours}
-                minutes={minutes}
-                seconds={seconds}
-            />
+            <ShowCounter hours={hours} minutes={minutes} seconds={seconds} />
         );
     }
 };
